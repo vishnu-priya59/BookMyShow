@@ -5,11 +5,8 @@ import bookMyShow.demo.models.*;
 import bookMyShow.demo.database.*;
 import bookMyShow.demo.service.booking.BookingService;
 import bookMyShow.demo.service.notification.NotificationService;
-import bookMyShow.demo.service.payment.PaymentService;
-import bookMyShow.demo.service.payment.UPIPayments;
-import bookMyShow.demo.service.theatre.TheaterService;
-import java.util.Arrays;
-import java.util.List;
+import bookMyShow.demo.service.payment.*;
+import bookMyShow.demo.service.theatre.*;
 import java.util.*;
 
 class Main {
@@ -17,16 +14,34 @@ class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Register a new user:");
-        System.out.print("Username: ");
-        String username = scanner.nextLine();
-        System.out.print("Password: ");
-        String password = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
-        System.out.print("Phone: ");
-        String phone = scanner.nextLine();
+        String username;
+        while (true) {
+            System.out.print("Username (at least 3 characters): ");
+            username = scanner.nextLine().trim();
+            if (username.length() >= 3) break;
+            System.out.println("Invalid username! It must have at least 3 characters.");
+        }
+
+        String password;
+        do {
+            System.out.print("Password: ");
+            password = scanner.nextLine();
+        } while (password.length() < 6);
+
+        String email;
+        do {
+            System.out.print("Email: ");
+            email = scanner.nextLine().trim();
+        } while (!email.contains("@") || !email.contains("."));
 
 
+        String phone;
+        do {
+            System.out.print("Phone: ");
+            phone = scanner.nextLine().trim();
+        } while (!phone.matches("\\d{10}"));
+
+        System.out.println("User registered successfully!");
         User newUser = new User(username, password, email, phone);
         UserDB.registerUser(newUser);
         System.out.println("User registered successfully!");
@@ -53,48 +68,43 @@ class Main {
             // Search for a theater
             TheaterService theaterService = new TheaterService();
             System.out.print("\nEnter theater name to search: ");
+            Theater imaxTheater = theaterService.createTheater("IMAX", "IMAX 1", "Downtown", null);
             String theaterName = scanner.nextLine();
             Theater foundTheater = theaterService.searchTheater(theaterName);
             if (foundTheater != null) {
                 theaterService.displayTheaterDetails(foundTheater);
             } else {
                 System.out.println("Theater not found.");
+                return;
             }
 
-            // For demonstration, select the first movie
+
             if (!movies.isEmpty()) {
-                Movie selectedMovie = movies.get(0);
-                // Select the first movie
-                Theater imaxTheater = theaterService.createTheater("IMAX", "IMAX 1", "Downtown", null);
+                Movie selectedMovie = movies.get(7);
 
                 // Create Booking Service
                 BookingService bookingService = new BookingService();
 
-                // Create threads for booking tickets
                 Runnable bookingTask = () -> {
-                    bookingService.bookTickets(imaxTheater, Arrays.asList("IMAX-1", "IMAX-2"), selectedMovie);
+                    bookingService.bookTickets(imaxTheater, Arrays.asList("SEAT-1","SEAT-2"), selectedMovie);
                 };
 
                 Thread bookingThread1 = new Thread(bookingTask);
-                Thread bookingThread2 = new Thread(bookingTask);
 
                 // Start booking threads
-                bookingThread1.start();
-                bookingThread2.start();
-
-                // Wait for both threads to finish
                 try {
-                    bookingThread1.join();
-                    bookingThread2.join();
-                } catch (InterruptedException e) {
+                    bookingThread1.start();
+                } catch (Exception e) {
                     Thread.currentThread().interrupt();
                     System.out.println("Booking interrupted.");
                 }
 
                 // Payment Service
+                System.out.print("Enter the amount to pay: ");
+                double amount = scanner.nextDouble();
                 PaymentService paymentService = new PaymentService();
-                paymentService.setPaymentStrategy(new UPIPayments()); // Set strategy
-                paymentService.executePayment(500.0); // Execute payment
+                paymentService.setPaymentStrategy(new UPIPayments());
+                paymentService.executePayment(amount);
 
                 // Notification Service
                 NotificationService notificationService = new NotificationService();

@@ -9,8 +9,7 @@ public class User implements Observer {
         this.email=email;
     }
     public String displayUser(){
-        //System.out.println("Name: "+ name+ "Email: "+ email);
-
+        System.out.println("Name: "+ name+ "Email: "+ email);
         return "Name: "+ name+ "Email: "+ email;
     }
     @Override

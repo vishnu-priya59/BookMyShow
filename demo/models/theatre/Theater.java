@@ -1,11 +1,7 @@
 
 package bookMyShow.demo.models.theatre;
 import bookMyShow.demo.models.Seat;
-import bookMyShow.demo.models.Show;
-
-import java.util.Arrays;
 import java.util.List;
-
 import static bookMyShow.demo.models.Seat.seats;
 
 public class Theater {
