@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Screen {
     private String screenId;
-    private String screenType; // IMAX, 4DX, etc.
+    private String screenType;
     private List<Seat> seats;
 
     public Screen(String screenId, String screenType, List<Seat> seats, List<Theater> theaters) {
@@ -14,7 +14,6 @@ public class Screen {
         this.seats = seats;
     }
 
-    // Getters
     public String getScreenId() { return screenId; }
     public String getScreenType() { return screenType; }
     public List<Seat> getSeats() { return seats; }

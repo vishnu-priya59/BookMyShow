@@ -16,7 +16,6 @@ public class Database {
         showDB = new ShowDB();
         seatDB = new SeatDB();
         bookingDB = new BookingDB();
-        initializeData(); // Method to populate initial data
     }
 
     public static Database getInstance() {
@@ -39,8 +38,5 @@ public class Database {
     public SeatDB getSeatDB() { return seatDB; }
     public BookingDB getBookingDB() { return bookingDB; }
 
-    private void initializeData() {
-        // Initialize data for movies, theatres, etc.
-    }
 }
 

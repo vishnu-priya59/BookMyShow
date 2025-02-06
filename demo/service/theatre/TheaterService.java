@@ -25,7 +25,7 @@ public class TheaterService {
         System.out.println("\nTheater Details:");
         System.out.println("Name: " + theater.getName());
         System.out.println("Location: " + theater.getLocation());
-        System.out.println("Available Seats: " +
-                theater.getSeats().stream().filter(s -> !s.isBooked()).count());
+       /* System.out.println("Available Seats: " +
+                theater.getSeats().stream().filter(s -> !s.isBooked()).count());*/
     }
 }

@@ -19,7 +19,7 @@ public class BookingService {
                         .ifPresent(Seat::bookSeat);
             });
             System.out.println("\nBooked " + seatNumbers.size() +
-                    " seats for " + movie.getName());
+                     " seats for " + movie.getName());
         }
     }
 }
