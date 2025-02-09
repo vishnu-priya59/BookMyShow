@@ -1,6 +1,6 @@
-package bookMyShow.demo.models.theatre;
+package com.bookmyshow.model.theatre;
 
-public class SingleScreen implements Theatre{
+public class SingleScreen implements TheatreType {
     @Override
     public void showDetails() {
         System.out.println("Single screen classic theatre");

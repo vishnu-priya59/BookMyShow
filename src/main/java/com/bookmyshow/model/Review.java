@@ -1,4 +1,4 @@
-package bookMyShow.demo.models;
+package com.bookmyshow.model;
 
 public class Review {
     private String username;

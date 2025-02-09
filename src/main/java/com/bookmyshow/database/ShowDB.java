@@ -1,7 +1,5 @@
 package com.bookmyshow.database;
-
-import bookMyShow.demo.models.Show;
-
+import com.bookmyshow.model.Show;
 import java.util.ArrayList;
 import java.util.List;
 

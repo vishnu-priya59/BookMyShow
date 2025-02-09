@@ -1,14 +1,14 @@
 
 package com.bookmyshow.service.theatre;
 
-import bookMyShow.demo.models.theatre.Theater;
-import bookMyShow.demo.models.Seat;
+import com.bookmyshow.model.theatre.Theater;
+import com.bookmyshow.model.Seat;
 import java.util.*;
 
 public class TheaterService {
     private List<Theater> theaters = new ArrayList<>();
 
-    public Theater createTheater(String name, String location, String downtown, List<Seat> seats) {
+    public Theater createTheater(String name, String location, List<Seat> seats) {
         Theater theater = new Theater(name, location, seats);
         theaters.add(theater);
         return theater;
