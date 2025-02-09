@@ -1,5 +1,5 @@
 package com.bookmyshow.database;
-import bookMyShow.demo.models.Movie;
+import com.bookmyshow.model.Movie;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

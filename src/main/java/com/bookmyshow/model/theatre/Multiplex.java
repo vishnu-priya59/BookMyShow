@@ -1,6 +1,6 @@
-package bookMyShow.demo.models.theatre;
+package com.bookmyshow.model.theatre;
 
-public class Multiplex implements Theatre{
+public class Multiplex implements TheatreType {
     @Override
     public void showDetails() {
         System.out.println("Multiplex theatre with Dolby Sound");

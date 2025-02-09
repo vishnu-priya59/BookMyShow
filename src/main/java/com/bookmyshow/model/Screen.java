@@ -1,6 +1,6 @@
-package bookMyShow.demo.models;
+package com.bookmyshow.model;
 
-import bookMyShow.demo.models.theatre.Theater;
+import com.bookmyshow.model.theatre.Theater;
 import java.util.List;
 
 public class Screen {

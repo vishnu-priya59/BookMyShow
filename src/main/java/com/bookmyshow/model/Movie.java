@@ -1,4 +1,4 @@
-package bookMyShow.demo.models;
+package com.bookmyshow.model;
 import java.time.LocalDate;
 
 public class Movie {

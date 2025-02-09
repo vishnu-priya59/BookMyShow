@@ -1,12 +1,7 @@
-
-package bookMyShow.demo.models.theatre;
-import bookMyShow.demo.models.Seat;
-import bookMyShow.demo.models.Show;
-
-import java.util.Arrays;
+package com.bookmyshow.model.theatre;
+import com.bookmyshow.model.Seat;
 import java.util.List;
-
-import static bookMyShow.demo.models.Seat.seats;
+import static com.bookmyshow.model.Seat.seats;
 
 public class Theater {
     private String name;
@@ -21,7 +16,7 @@ public class Theater {
 
     public String getName() { return name; }
     public String getLocation() { return location; }
-    public List<Seat> getShows() { return shows; }
+    //public List<Seat> getShows() { return shows; }
     public void showDetails() {
         System.out.println("Theater: " + name + ", Location: " + location);
     }

@@ -1,8 +1,8 @@
 package com.bookmyshow.service.booking;
 
-import bookMyShow.demo.models.Seat;
-import bookMyShow.demo.models.Movie;
-import bookMyShow.demo.models.theatre.Theater;
+import com.bookmyshow.model.Seat;
+import com.bookmyshow.model.Movie;
+import com.bookmyshow.model.theatre.Theater;
 
 import java.util.*;
 
